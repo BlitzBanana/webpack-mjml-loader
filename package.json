@@ -1,6 +1,6 @@
 {
   "name": "webpack-mjml-loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "author": "Victor Rebiard--Crépin",
   "main": "dist/index.js",
@@ -14,7 +14,7 @@
     "build": "tsdx build",
     "test": "tsdx test",
     "lint": "tsdx lint",
-    "publish": "np"
+    "deploy": "np"
   },
   "peerDependencies": {
     "mjml": ">=4.0.0"
