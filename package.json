@@ -1,6 +1,6 @@
 {
   "name": "webpack-mjml-loader",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "author": "Victor Rebiard--Crépin",
   "main": "dist/index.js",
