@@ -1,16 +1,16 @@
-# MJML 4.X webpack loader
+# MJML 4 webpack loader
 
 > This project was bootstrapped with [TSDX](https://github.com/jaredpalmer/tsdx).
 
 ## Usage
 
 Install the package as devDependency:
-```
+```sh
 yarn add -D webpack-mjml-loader
 ```
 
 Install MJML package as devDependency:
-```
+```sh
 yarn add -D mjml
 ```
 
@@ -35,6 +35,14 @@ module.exports = {
   }
 }
 ```
+
+Enjoy !
+```js
+import { default as foobarTemplate } from './foobar.mjml'
+
+sendEmail(foobarTemplate, { /* my options */ })
+```
+
 
 ## Local Development
 
