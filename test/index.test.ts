@@ -30,4 +30,23 @@ describe('loader', () => {
     `
     expect(() => loader.apply(context, [source])).not.toThrow(Error)
   })
+
+  it('accepts any mjml options', () => {
+    const context = {
+      resourcePath: '/foo/bar.mjml',
+      query: { minify: true },
+    } as webpack.loader.LoaderContext
+    const source = `
+    <mjml>
+      <mj-body>
+        <mj-section>
+          <mj-column>
+            <mj-text>Hello World</mj-text>
+          </mj-column>
+        </mj-section>
+      </mj-body>
+    </mjml>
+    `
+    expect(() => loader.apply(context, [source])).not.toThrow(Error)
+  })
 })

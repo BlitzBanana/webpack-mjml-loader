@@ -30,6 +30,9 @@
     "lint": "tsdx lint",
     "release": "np"
   },
+  "dependencies": {
+    "loader-utils": "^2.0.0"
+  },
   "peerDependencies": {
     "mjml": ">=4.0.0"
   },

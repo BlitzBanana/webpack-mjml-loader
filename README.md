@@ -31,7 +31,8 @@ module.exports = {
         test: /\.mjml$/,
         use: [
           {
-            loader: 'webpack-mjml-loader'
+            loader: 'webpack-mjml-loader',
+            options: { /* any mjml options */ minify: true } // optional, you can omit options
           }
         ]
       }
