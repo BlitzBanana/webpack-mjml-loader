@@ -1,54 +1,24 @@
 import loader from '../src'
-import * as webpack from 'webpack'
+import compiler from './compiler'
+
 
 describe('loader', () => {
   it('is a function', () => {
     expect(typeof loader).toEqual('function')
   })
 
-  it('throws error on incorrect markup', () => {
-    const context = {
-      resourcePath: '/foo/bar.mjml',
-      getOptions() { return {} }
-    } as webpack.LoaderContext<{}>
-    expect(() => loader.apply(context, ['incorrect markup'])).toThrow(Error)
+  it('process mjml correctly', async () => {
+    const stats = await compiler('pass.mjml', { minify: true })
+    const output = stats.toJson({ source: true }).modules?.[0].source
+
+    expect(output).toMatch(/export default "/)
+    expect(output).toMatch(/<!doctype html>/)
+    expect(output).toMatch(/Hello World/)
   })
 
-  it('does not throw on correct markup', () => {
-    const context = {
-      resourcePath: '/foo/bar.mjml',
-      getOptions() { return {} }
-    } as webpack.LoaderContext<{}>
-    const source = `
-    <mjml>
-      <mj-body>
-        <mj-section>
-          <mj-column>
-            <mj-text>Hello World</mj-text>
-          </mj-column>
-        </mj-section>
-      </mj-body>
-    </mjml>
-    `
-    expect(() => loader.apply(context, [source])).not.toThrow(Error)
-  })
-
-  it('accepts any mjml options', () => {
-    const context = {
-      resourcePath: '/foo/bar.mjml',
-      getOptions() { return { minify: true } },
-    } as webpack.LoaderContext<{ minify: boolean }>
-    const source = `
-    <mjml>
-      <mj-body>
-        <mj-section>
-          <mj-column>
-            <mj-text>Hello World</mj-text>
-          </mj-column>
-        </mj-section>
-      </mj-body>
-    </mjml>
-    `
-    expect(() => loader.apply(context, [source])).not.toThrow(Error)
+  it('throws error on incorrect markup', async () => {
+    await expect(compiler('fail.mjml')).rejects.toMatchObject([{
+      message: /Error: \[mjml-loader\]/
+    }])
   })
 })
