@@ -28,7 +28,7 @@
     "build": "tsdx build",
     "test": "tsdx test",
     "lint": "tsdx lint",
-    "release": "np"
+    "release": "yarn build && np"
   },
   "peerDependencies": {
     "mjml": ">=4.0.0"
