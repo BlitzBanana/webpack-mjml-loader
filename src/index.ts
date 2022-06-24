@@ -1,9 +1,8 @@
 import mjml from 'mjml'
-import { loader } from 'webpack'
-import { getOptions } from 'loader-utils'
+import { LoaderDefinitionFunction } from 'webpack'
 
-export default function(this: loader.LoaderContext, source: string) {
-  const options = Object.assign({}, getOptions(this))
+const loader: LoaderDefinitionFunction = function (source) {
+  const options = this.getOptions();
   const { html, errors } = mjml(source, options)
 
   if (errors.length) {
@@ -14,3 +13,5 @@ export default function(this: loader.LoaderContext, source: string) {
 
   return `export default ${JSON.stringify(html)}`
 }
+
+export default loader
