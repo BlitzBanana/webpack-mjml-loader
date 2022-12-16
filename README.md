@@ -25,16 +25,20 @@ Update your webpack config:
 // webpack.config.js
 
 module.exports = {
-  /* The rest of your webpack config */
+  // [...] The rest of your webpack config
   module: {
     rules: [
-      /* Your other rules like babel-loader */
+      // [...] Your other rules like babel-loader
       {
         test: /\.mjml$/,
         use: [
           {
             loader: 'webpack-mjml-loader',
-            options: { /* any mjml options */ minify: true } // optional, you can omit options
+            // optional, you can omit options
+            options: {
+              // mjml options, see: https://github.com/mjmlio/mjml#inside-nodejs
+              keepComments: false
+            }
           }
         ]
       }
