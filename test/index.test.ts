@@ -8,7 +8,7 @@ describe('loader', () => {
   })
 
   it('process mjml correctly', async () => {
-    const stats = await compiler('pass.mjml', { minify: true })
+    const stats = await compiler('pass.mjml')
     const output = stats.toJson({ source: true }).modules?.[0].source
 
     expect(output).toMatch(/export default "/)

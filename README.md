@@ -36,8 +36,8 @@ module.exports = {
             loader: 'webpack-mjml-loader',
             // optional, you can omit options
             options: {
-              // mjml options, see: https://github.com/mjmlio/mjml#inside-nodejs
-              keepComments: false
+              // any mjml option, see: https://github.com/mjmlio/mjml#inside-nodejs
+              // minify: true // Deprecated by mjml, will be removed from mjml 5.0
             }
           }
         ]
